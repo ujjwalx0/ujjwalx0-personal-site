@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/', // This is used for user/organization pages
+  base: '/ujjwalx0-personal-site/',
 });
