@@ -10,23 +10,22 @@ import {
   reactjs,
   redux,
   tailwind,
-  nodejs,
   git,
-  figma,
-  docker,
+  microservices,
   postgresql,
-  rubyrails,
-  graphql,
+  restapi,
   komikult,
   leaderboard,
   math,
   movie,
   nyeusi,
-  space,
   coverhunt,
   dcc,
   kelhel,
   microverse,
+  java,
+  Angular,
+  SpringBoot,
 } from '../assets';
 
 export const navLinks = [
@@ -89,20 +88,24 @@ const technologies = [
     icon: redux,
   },
   {
+    name: 'Angular',
+    icon: Angular,
+  },
+  {
     name: 'Tailwind CSS',
     icon: tailwind,
   },
   {
-    name: 'Node JS',
-    icon: nodejs,
+    name: 'Java',
+    icon: java,
   },
   {
-    name: 'Rails',
-    icon: rubyrails,
+    name: 'Spring Boot',
+    icon: SpringBoot,
   },
   {
-    name: 'graphql',
-    icon: graphql,
+    name: 'Rest API',
+    icon: restapi,
   },
   {
     name: 'postgresql',
@@ -112,13 +115,10 @@ const technologies = [
     name: 'git',
     icon: git,
   },
+ 
   {
-    name: 'figma',
-    icon: figma,
-  },
-  {
-    name: 'docker',
-    icon: docker,
+    name: 'Microservices',
+    icon: microservices,
   },
 ];
 

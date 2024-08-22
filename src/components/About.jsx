@@ -29,21 +29,21 @@ const ServiceCard = ({ index, title, icon }) => {
 const About = () => {
   return (
     <div className="-mt-[6rem]">
-      <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Introduction</p>
-        <h2 className={styles.sectionHeadText}>Overview.</h2>
-      </motion.div>
+ <motion.div variants={textVariant()}>
+  <p className={styles.sectionSubText}>Introduction</p>
+  <h2 className={styles.sectionHeadText}>Overview.</h2>
+</motion.div>
 
-      <motion.p
-        variants={fadeIn('', '', 0.1, 1)}
-        className="mt-4 text-taupe text-[18px] max-w-3xl leading-[30px]">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis
-        sapiente ipsum dolorum dicta eaque cumque inventore molestias, beatae ea
-        quaerat alias accusamus voluptas autem! Alias odit voluptates in totam
-        vitae dignissimos minus eaque culpa unde tempore dolore aperiam
-        obcaecati voluptatum aliquam corrupti, suscipit accusamus! Odit unde
-        veniam dolorum ipsum doloribus.
-      </motion.p>
+<motion.p
+  variants={fadeIn('', '', 0.1, 1)}
+  className="mt-4 text-taupe text-[18px] max-w-3xl leading-[30px]"
+>
+  With over 3 years of deep-dive experience in full-stack development, I’ve been crafting solutions that drive real-world impact for top-tier automotive clients like Ashok Leyland and Hyundai. Currently, I’m at Hinduja Tech, where I contribute to high-stakes projects involving scalable microservices, robust backend systems, and fluid frontend interfaces.
+
+  My toolkit is powered by technologies like Java, Spring Boot, React, Angular, REST, Microservices, and GraphQL, helping me build seamless user experiences and resilient infrastructures.
+
+  Whether it's architecting complex systems or refining UI components, I’m all about delivering polished and efficient software solutions.
+</motion.p>
 
       <div className="mt-20 flex flex-wrap gap-10">
         {services.map((service, index) => (

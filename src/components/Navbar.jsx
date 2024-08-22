@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { styles } from '../styles';
 import { navLinks } from '../constants';
 import { close, menu, logo, logotext } from '../assets';
+import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
 
 const Navbar = () => {
   const [active, setActive] = useState('');
@@ -13,27 +14,20 @@ const Navbar = () => {
       className={`${styles.paddingX} w-full flex items-center py-2 fixed 
       top-0 z-20 bg-flashWhite sm:opacity-[0.97] xxs:h-[12vh]`}>
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
-        <Link
-          to="/"
-          className="flex items-center gap-2"
-          onClick={() => {
-            setActive('');
-            window.scrollTo(0, 0);
-          }}>
-          <img
-            src={logo} // your logo comes here
-            alt="logo"
-            className="sm:w-[50px] sm:h-[50px] w-[45px] h-[45px] object-contain"
-          />
+        {/* Social Icons */}
+        <div className="flex gap-4 items-center">
+          <a href="https://www.linkedin.com/in/ujjwal-93267019b/" target="_blank" rel="noopener noreferrer">
+            <FaLinkedin className="text-[#0A66C2] w-7 h-7 hover:scale-105 transition-transform duration-300 cursor-pointer" />
+          </a>
+          <a href="https://github.com/ujjwalx0" target="_blank" rel="noopener noreferrer">
+            <FaGithub className="text-black w-7 h-7 hover:scale-105 transition-transform duration-300 cursor-pointer" />
+          </a>
+          <a href="https://www.instagram.com/_uzzwal" target="_blank" rel="noopener noreferrer">
+            <FaInstagram className="text-[#E1306C] w-7 h-7 hover:scale-105 transition-transform duration-300 cursor-pointer" />
+          </a>
+        </div>
 
-          {/* if you have text you want besides your logo it comes here.
-          Otherwise delete this if you don't need it. */}
-          <img
-            src={logotext}
-            alt="logo"
-            className="sm:w-[90px] sm:h-[90px] w-[85px] h-[85px] -ml-[0.6rem] object-contain"
-          />
-        </Link>
+        {/* Navigation Links for larger screens */}
         <ul className="list-none hidden sm:flex flex-row gap-14 mt-2">
           {navLinks.map((nav) => (
             <li
@@ -48,7 +42,7 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* mobile */}
+        {/* Mobile Menu */}
         <div className="sm:hidden flex flex-1 w-screen justify-end items-center">
           {toggle ? (
             <div
@@ -65,16 +59,13 @@ const Navbar = () => {
                 />
               </div>
               <ul
-                className="list-none flex flex-col -gap-[1rem] 
-                items-start justify-end mt-[10rem] -ml-[35px]">
+                className="list-none flex flex-col gap-8 items-start justify-end mt-[10rem] ml-[20px]">
                 {navLinks.map((nav) => (
                   <li
-                    id={nav.id}
                     key={nav.id}
                     className={`${
                       active === nav.title ? 'text-french' : 'text-eerieBlack'
-                    } text-[88px] font-bold font-arenq 
-                      uppercase tracking-[1px] cursor-pointer`}
+                    } text-[30px] xxs:text-[35px] xs:text-[40px] font-bold font-arenq uppercase tracking-[1px] cursor-pointer`}
                     onClick={() => {
                       setToggle(!toggle);
                       setActive(nav.title);
