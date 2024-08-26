@@ -37,12 +37,18 @@ import postgresql from './tech/postgresql.png';
 import java from      './tech/java.png';
 import Angular from     './tech/Angular.png';
 import SpringBoot from   './tech/SpringBoot.png';
+import Hyundai from     './logo/Hyundai.png';
+import AL from          './logo/AL.png';
+import albonair from          './logo/albonair.jpeg';
+import visitor from       './logo/visitor.png';
+import htl from       './logo/htl.png';
 
 
-import coverhunt from './company/coverhunt.png';
-import dcc from './company/dcc.png';
+
+import Freelancer from './company/Freelance.png';
+import hinduja from './company/hinduja.png';
 import kelhel from './company/kelhel.png';
-import microverse from './company/microverse.png';
+import regex from './company/regex.png';
 
 import komikult from './projects/komikult.png';
 import leaderboard from './projects/leaderboard.png';
@@ -90,11 +96,15 @@ export {
   movie,
   nyeusi,
   space,
-  coverhunt,
-  dcc,
-  kelhel,
-  microverse,
   java,
   Angular,
   SpringBoot,
+  Hyundai,
+  AL,
+  albonair,
+  visitor,
+  htl,
+  Freelancer,
+  regex,
+  hinduja,
 };
