@@ -6,7 +6,7 @@ import { styles } from '../styles';
 import '../index.css';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { projects } from '../constants';
-import { fadeIn, textVariant, staggerContainer } from '../utils/motion';
+import { fadeIn, textVariant, staggerContainer, slideIn } from '../utils/motion';
 
 const ProjectCard = ({
   id,
@@ -26,10 +26,12 @@ const ProjectCard = ({
     e.stopPropagation();
     handleClick(active === id ? null : id);
   };
+ 
+  
 
   return (
     <motion.div
-      variants={fadeIn('right', 'spring', index * 0.5, 0.75)}
+      variants={fadeIn('left', 'tween', index * 1.5, 0.75)}
       className={`relative ${
         active === id ? 'lg:flex-[3.5] flex-[10] z-30' : 'lg:flex-[1] flex-[1] z-10'
       } flex items-center justify-center h-[420px] cursor-pointer card-shadow transition-all duration-300 mx-2`}
@@ -130,6 +132,7 @@ const Projects = () => {
     slidesToScroll: 1,
     adaptiveHeight: true,
     arrows: true,
+    autoplay:true,
     accessibility: true,
     responsive: [
       {
