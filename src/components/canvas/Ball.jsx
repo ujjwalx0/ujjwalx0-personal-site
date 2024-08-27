@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useState, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import {
   Decal,
@@ -36,15 +36,41 @@ const Ball = (props) => {
 };
 
 const BallCanvas = ({ icon }) => {
-  return (
-    <Canvas frameloop="always" gl={{ preserveDrawingBuffer: true }}>
-      <Suspense fallback={<Loader />}>
-        <OrbitControls enableZoom={false} position0={0} />
-        <Ball imgUrl={icon} />
-      </Suspense>
+  const [isInView, setIsInView] = useState(false);
+  const canvasRef = useRef();
 
-      <Preload all />
-    </Canvas>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 } // Trigger when 10% of the canvas is visible
+    );
+
+    if (canvasRef.current) {
+      observer.observe(canvasRef.current);
+    }
+
+    return () => {
+      if (canvasRef.current) {
+        observer.unobserve(canvasRef.current);
+      }
+    };
+  }, []);
+
+  return (
+    <div ref={canvasRef} className="w-full h-full">
+      {isInView && (
+        <Canvas frameloop="always" gl={{ preserveDrawingBuffer: true }}>
+          <Suspense fallback={<Loader />}>
+            <OrbitControls enableZoom={false} position0={0} />
+            <Ball imgUrl={icon} />
+          </Suspense>
+          <Preload all />
+        </Canvas>
+      )}
+    </div>
   );
 };
 
