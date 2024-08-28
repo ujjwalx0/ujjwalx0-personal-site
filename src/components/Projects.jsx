@@ -132,7 +132,6 @@ const Projects = () => {
     slidesToScroll: 1,
     adaptiveHeight: true,
     arrows: true,
-    autoplay:true,
     accessibility: true,
     responsive: [
       {

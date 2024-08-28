@@ -81,10 +81,10 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex flex-col xl:flex-row xl:gap-10 gap-8 overflow-hidden xl:items-start items-center mt-16 xl:mt-0">
+    <div className="flex flex-col xl:flex-row xl:gap-10 gap-6 overflow-hidden xl:items-start items-center mt-16 xl:mt-0 px-4">
       <motion.div
         variants={slideIn('right', 'tween', 0.2, 1)}
-        className="flex-1 bg-jet p-8 rounded-2xl shadow-lg"
+        className="flex-1 bg-jet p-8 rounded-2xl shadow-lg w-full max-w-lg"
       >
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadTextLight}>Contact.</h3>
@@ -92,45 +92,45 @@ const Contact = () => {
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className="mt-10 flex flex-col gap-6 font-poppins"
+          className="mt-10 flex flex-col gap-6 font-poppins w-full"
         >
           <label className="flex flex-col">
-            <span className="text-timberWolf font-medium mb-4">Your Name</span>
+            <span className="text-timberWolf font-medium mb-2 sm:mb-4">Your Name</span>
             <input
               type="text"
               name="name"
               value={form.name}
               onChange={handleChange}
               placeholder="What's your name?"
-              className="bg-eerieBlack py-4 px-6 placeholder:text-taupe text-timberWolf rounded-lg outline-none border-none font-medium"
+              className="bg-eerieBlack py-3 px-4 sm:py-4 sm:px-6 placeholder:text-taupe text-timberWolf rounded-lg outline-none border-none font-medium"
             />
           </label>
           <label className="flex flex-col">
-            <span className="text-timberWolf font-medium mb-4">Your Email</span>
+            <span className="text-timberWolf font-medium mb-2 sm:mb-4">Your Email</span>
             <input
               type="email"
               name="email"
               value={form.email}
               onChange={handleChange}
               placeholder="What's your email?"
-              className="bg-eerieBlack py-4 px-6 placeholder:text-taupe text-timberWolf rounded-lg outline-none border-none font-medium"
+              className="bg-eerieBlack py-3 px-4 sm:py-4 sm:px-6 placeholder:text-taupe text-timberWolf rounded-lg outline-none border-none font-medium"
             />
           </label>
           <label className="flex flex-col">
-            <span className="text-timberWolf font-medium mb-4">Your Message</span>
+            <span className="text-timberWolf font-medium mb-2 sm:mb-4">Your Message</span>
             <textarea
-              rows="7"
+              rows="6"
               name="message"
               value={form.message}
               onChange={handleChange}
               placeholder="What's your message?"
-              className="bg-eerieBlack py-4 px-6 placeholder:text-taupe text-timberWolf rounded-lg outline-none border-none font-medium resize-none"
+              className="bg-eerieBlack py-3 px-4 sm:py-4 sm:px-6 placeholder:text-taupe text-timberWolf rounded-lg outline-none border-none font-medium resize-none"
             />
           </label>
 
           <button
             type="submit"
-            className="flex justify-center items-center py-3 px-6 rounded-lg bg-night text-timberWolf font-bold text-lg transition duration-300 ease-in-out hover:bg-battleGray hover:text-eerieBlack"
+            className="flex justify-center items-center py-3 sm:py-4 px-6 rounded-lg bg-night text-timberWolf font-bold text-lg transition duration-300 ease-in-out hover:bg-battleGray hover:text-eerieBlack"
             onMouseOver={() => {
               document.querySelector('.contact-btn').setAttribute('src', sendHover);
             }}
