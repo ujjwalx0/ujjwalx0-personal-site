@@ -31,7 +31,7 @@ const ProjectCard = ({
 
   return (
     <motion.div
-      variants={fadeIn('left', 'tween', index * 1.5, 0.75)}
+      variants={fadeIn('left', 'linear', index * 0.15, 0.25)}
       className={`relative ${
         active === id ? 'lg:flex-[3.5] flex-[10] z-30' : 'lg:flex-[1] flex-[1] z-10'
       } flex items-center justify-center h-[420px] cursor-pointer card-shadow transition-all duration-300 mx-2`}

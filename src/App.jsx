@@ -11,19 +11,16 @@ import {
   Projects,
 } from './components';
 
-// Replace with your actual Bin ID and API Key
-const BIN_ID = '66cdbf7eacd3cb34a87a374b'; // Replace with your Bin ID
-const API_KEY = '$2a$10$.ipxYNlMqBW98z5rAdUEzOyxGrtqxLD0/p4/UGn9CjOGz/0L0dl0e'; // Replace with your API Key
+
+const BIN_ID = '66cdbf7eacd3cb34a87a374b'; 
+const API_KEY = '$2a$10$.ipxYNlMqBW98z5rAdUEzOyxGrtqxLD0/p4/UGn9CjOGz/0L0dl0e'; 
 
 const App = () => {
   const [visitCount, setVisitCount] = useState(0);
-<<<<<<< HEAD
-  const [visitedIPs, setVisitedIPs] = useState(new Set());
-=======
->>>>>>> 24e17c2238997f233dd4a4bc928f9f6e655c0ae4
+  const [sessionStartTime, setSessionStartTime] = useState(Date.now());
 
   useEffect(() => {
-    const updateVisitCount = async () => {
+    const updateVisitData = async () => {
       try {
         // Fetch current data from JSONBin
         const response = await axios.get(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
@@ -34,9 +31,6 @@ const App = () => {
 
         const { visits, visitorDetails } = response.data.record;
         const existingIPs = new Set(visitorDetails.map(detail => detail.ip));
-<<<<<<< HEAD
-        const currentIP = await (await axios.get('https://ipapi.co/json/')).data.ip;
-=======
         const ipData = await axios.get('https://ipapi.co/json/');
         
         const currentIP = ipData.data.ip;
@@ -61,161 +55,98 @@ const App = () => {
           languages = 'Unknown',
           version = 'Unknown',
         } = ipData.data;
->>>>>>> 24e17c2238997f233dd4a4bc928f9f6e655c0ae4
 
-        // Set visit count from JSONBin
+        const currentTime = new Date().toLocaleString();
         setVisitCount(visits);
 
-<<<<<<< HEAD
-        // Only update visit count and details if the IP is not already recorded
+        let newCount = visits;
+        let updatedVisitorDetails = [...visitorDetails];
+
         if (!existingIPs.has(currentIP)) {
-          const newCount = visits + 1;
-
-=======
-        if (!existingIPs.has(currentIP)) {
-          const newCount = visits + 1;
-
-          // Get cookies data
-          const cookies = document.cookie.split(';').reduce((acc, cookie) => {
-            const [name, value] = cookie.split('=').map(c => c.trim());
-            acc[name] = value;
-            return acc;
-          }, {});
-
-          const browserInfo = {
-            userAgent: navigator.userAgent,
-            appName: navigator.appName,
-            appVersion: navigator.appVersion,
-            platform: navigator.platform,
-            language: navigator.language,
-            cookieEnabled: navigator.cookieEnabled,
-            hardwareConcurrency: navigator.hardwareConcurrency,
-          };
-
-          const screenInfo = {
-            width: window.screen.width,
-            height: window.screen.height,
-            colorDepth: window.screen.colorDepth,
-          };
-
-          const deviceMemory = navigator.deviceMemory || 'Unknown';
-
-          const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-          const networkInfo = connection ? {
-            effectiveType: connection.effectiveType,
-            downlink: connection.downlink,
-          } : 'No network information';
-
-          const localStorageData = {};
-          for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i);
-            localStorageData[key] = localStorage.getItem(key);
-          }
-
-          const sessionStorageData = {};
-          for (let i = 0; i < sessionStorage.length; i++) {
-            const key = sessionStorage.key(i);
-            sessionStorageData[key] = sessionStorage.getItem(key);
-          }
-
-          // Using FingerprintJS for browser fingerprinting
-          const fingerprint = await new Promise((resolve) => {
-            import('https://cdn.jsdelivr.net/npm/fingerprintjs@3/dist/fingerprint.min.js')
-              .then(({ default: FingerprintJS }) => FingerprintJS.load())
-              .then(fp => fp.get())
-              .then(result => resolve(result.visitorId))
-              .catch(() => resolve('Fingerprint not available'));
+          newCount += 1;
+          updatedVisitorDetails.push({
+            ip: currentIP,
+            city,
+            region,
+            country,
+            longitude,
+            latitude,
+            network,
+            org,
+            postal,
+            timezone,
+            continent_code,
+            country_code,
+            country_name,
+            country_population,
+            country_calling_code,
+            country_capital,
+            currency,
+            currency_name,
+            languages,
+            version,
+            visitCount: 1,
+            lastVisit: currentTime,
+            totalSpentTime: '0 seconds', 
           });
-
->>>>>>> 24e17c2238997f233dd4a4bc928f9f6e655c0ae4
-          // Update the visit count and visitor details in JSONBin
-          await axios.put(
-            `https://api.jsonbin.io/v3/b/${BIN_ID}`,
-            {
-              visits: newCount,
-              visitorDetails: [
-                ...visitorDetails,
-                {
-                  ip: currentIP,
-<<<<<<< HEAD
-                  city: (await axios.get('https://ipapi.co/json/')).data.city,
-                  region: (await axios.get('https://ipapi.co/json/')).data.region,
-                  country: (await axios.get('https://ipapi.co/json/')).data.country,
-                  location: (await axios.get('https://ipapi.co/json/')).data.loc,
-                  browser: navigator.appName,
-                  platform: navigator.platform,
-                  userAgent: navigator.userAgent,
-=======
-                  city,
-                  region,
-                  country,
-                  longitude,
-                  latitude,
-                  network,
-                  org,
-                  postal,
-                  timezone,
-                  continent_code,
-                  country_code,
-                  country_name,
-                  country_population,
-                  country_calling_code,
-                  country_capital,
-                  currency,
-                  currency_name,
-                  languages,
-                  version,
-                  browser: navigator.appName,
-                  platform: navigator.platform,
-                  userAgent: navigator.userAgent,
-                  cookies: JSON.stringify(cookies), // Store cookies data as JSON string
-                  browserInfo,
-                  screenInfo,
-                  deviceMemory,
-                  networkInfo,
-                  localStorageData,
-                  sessionStorageData,
-                  fingerprint,
->>>>>>> 24e17c2238997f233dd4a4bc928f9f6e655c0ae4
-                },
-              ],
-            },
-            {
-              headers: {
-                'Content-Type': 'application/json',
-                'X-Master-Key': API_KEY,
-              },
-            }
-          );
-
-          setVisitCount(newCount);
-<<<<<<< HEAD
-=======
         } else {
-          // Update visitor details if they have changed
-          const updatedVisitorDetails = visitorDetails.map(detail => {
+          updatedVisitorDetails = updatedVisitorDetails.map(detail => {
             if (detail.ip === currentIP) {
               return {
                 ...detail,
-                city,
-                region,
-                country,
-                longitude,
-                latitude,
-                network,
-                org,
-                postal,
-                timezone,
-                continent_code,
-                country_code,
-                country_name,
-                country_population,
-                country_calling_code,
-                country_capital,
-                currency,
-                currency_name,
-                languages,
-                version,
+                visitCount: detail.visitCount + 1,
+                lastVisit: currentTime,
+              };
+            }
+            return detail;
+          });
+        }
+
+        await axios.put(
+          `https://api.jsonbin.io/v3/b/${BIN_ID}`,
+          {
+            visits: newCount,
+            visitorDetails: updatedVisitorDetails,
+          },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              'X-Master-Key': API_KEY,
+            },
+          }
+        );
+
+        setVisitCount(newCount);
+      } catch (error) {
+        console.error('Error updating visit count and details:', error);
+      }
+    };
+
+    updateVisitData();
+
+    return () => {
+      const sessionEndTime = Date.now();
+      const timeSpent = Math.round((sessionEndTime - sessionStartTime) / 1000); 
+
+      const updateTimeSpent = async () => {
+        try {
+          const response = await axios.get(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+            headers: {
+              'X-Master-Key': API_KEY,
+            },
+          });
+
+          const { visitorDetails } = response.data.record;
+          const ipData = await axios.get('https://ipapi.co/json/');
+          const currentIP = ipData.data.ip;
+
+          const updatedVisitorDetails = visitorDetails.map(detail => {
+            if (detail.ip === currentIP) {
+              // Convert existing totalSpentTime to seconds if it's not in seconds format
+              const currentSpentTime = parseInt(detail.totalSpentTime) || 0;
+              return {
+                ...detail,
+                totalSpentTime: `${currentSpentTime + timeSpent} seconds`, 
               };
             }
             return detail;
@@ -224,7 +155,6 @@ const App = () => {
           await axios.put(
             `https://api.jsonbin.io/v3/b/${BIN_ID}`,
             {
-              visits,
               visitorDetails: updatedVisitorDetails,
             },
             {
@@ -234,15 +164,14 @@ const App = () => {
               },
             }
           );
->>>>>>> 24e17c2238997f233dd4a4bc928f9f6e655c0ae4
+        } catch (error) {
+          console.error('Error updating time spent:', error);
         }
-      } catch (error) {
-        console.error('Error updating visit count and details:', error);
-      }
-    };
+      };
 
-    updateVisitCount();
-  }, []);
+      updateTimeSpent();
+    };
+  }, [sessionStartTime]);
 
   return (
     <BrowserRouter>
