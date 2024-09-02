@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BrowserRouter } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+
 import {
   About,
   Contact,
@@ -176,6 +178,15 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="relative z-0">
+      <Helmet>
+          <title>Ujjwal's Personal Website</title>
+          <meta name="description" content="Ujjwal's personal website showcasing portfolio, blog, and contact information." />
+          <meta property="og:title" content="Ujjwal's Personal Website" />
+          <meta property="og:description" content="Welcome to Ujjwal's personal website. Explore my portfolio, blog, and contact information." />
+          <meta property="og:image" content="https://ujjwalx0.github.io/ujjwalx0-personal-site/" />
+          <meta property="og:url" content="https://ujjwalx0.github.io/ujjwalx0-personal-site/#about" />
+          <meta property="og:type" content="website" />
+        </Helmet>
         <div>
           <Navbar />
           <Hero />
