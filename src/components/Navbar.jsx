@@ -16,7 +16,7 @@ const Navbar = () => {
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         {/* Social Icons */}
         <div className="flex gap-4 items-center">
-          <a href="https://www.linkedin.com/in/ujjwal-93267019b/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/ujjwal-k-93267019b/" target="_blank" rel="noopener noreferrer">
             <FaLinkedin className="text-[#0A66C2] w-7 h-7 hover:scale-105 transition-transform duration-300 cursor-pointer" />
           </a>
           <a href="https://github.com/ujjwalx0" target="_blank" rel="noopener noreferrer">
