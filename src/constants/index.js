@@ -130,18 +130,18 @@ const experiences = [
     date: 'Aug 2020 - Present',
   },
   {
-    title: 'Java Developer Intern',
-    company_name: 'regex Software services',
+    title: 'Junior Developer',
+    company_name: 'Vcare Techs',
     icon: regex,
     iconBg: '#333333',
-    date: 'Mar 2022 - Aug 2022',
+    date: 'Aug 2021 - Sep 2022',
   },
   {
     title: 'Full Stack Developer',
     company_name: 'Hinduja Tech Ltd',
     icon: hinduja,
     iconBg: '#333333',
-    date: 'sep 2022 - present',
+    date: 'sep 2022 - Oct2024',
   },
 
 ];
